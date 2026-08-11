@@ -2,12 +2,6 @@
 
 AMovable::AMovable()
 {
-	SceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRoot"));
-	SetRootComponent(SceneRoot);
-
-	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
-	StaticMeshComponent->SetupAttachment(SceneRoot);
-
 	MoveSpeed = 500.0f;
 	MaxRange = 3000.0f;
 	DistanceAccumulation = 0.0f;

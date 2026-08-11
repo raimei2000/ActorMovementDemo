@@ -2,10 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Transformable.h"
+
 #include "Movable.generated.h"
 
 UCLASS()
-class ACTORMOVEMENTDEMO_API AMovable : public AActor
+class ACTORMOVEMENTDEMO_API AMovable : public ATransformable
 {
 	GENERATED_BODY()
 	
@@ -13,11 +16,6 @@ public:
 	AMovable();
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movable|Components")
-	USceneComponent* SceneRoot;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movable|Components")
-	UStaticMeshComponent* StaticMeshComponent;
-
 	virtual void BeginPlay() override;
 
 public:	
