@@ -2,10 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Transformable.h"
+
 #include "Rotatable.generated.h"
 
 UCLASS()
-class ACTORMOVEMENTDEMO_API ARotatable : public AActor
+class ACTORMOVEMENTDEMO_API ARotatable : public ATransformable
 {
 	GENERATED_BODY()
 	
@@ -13,11 +16,6 @@ public:
 	ARotatable();
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Rotatable|Components")
-	USceneComponent* SceneRoot;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Rotatable|Components")
-	UStaticMeshComponent* StaticMeshComponent;
-
 	virtual void BeginPlay() override;
 
 public:
