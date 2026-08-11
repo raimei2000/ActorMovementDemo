@@ -8,26 +8,33 @@ AMovable::AMovable()
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMeshComponent->SetupAttachment(SceneRoot);
 
-	MoveSpeed = 50.0f;
-	MaxRange = 500.0f;
+	MoveSpeed = 500.0f;
+	MaxRange = 3000.0f;
+	DistanceAccumulation = 0.0f;
+	Direction = 1.0f;
 	StartLocation = FVector(0.0f, 0.0f, 0.0f);
 
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-// Called when the game starts or when spawned
 void AMovable::BeginPlay()
 {
 	Super::BeginPlay();
 	
 	StartLocation = GetActorLocation();
-	
 }
 
-// Called every frame
 void AMovable::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
+	float DeltaDistance = MoveSpeed * DeltaTime;
+	FVector DeltaVector = Direction * GetActorUpVector() * DeltaDistance;
+	DistanceAccumulation += DeltaDistance;
+	if (DistanceAccumulation >= MaxRange)
+	{
+		Direction = FMath::Clamp(-1.0f * Direction, -1.0f, 1.0f);
+		DistanceAccumulation = 0.0f;
+	}
+	AddActorWorldOffset(DeltaVector);
 }
-

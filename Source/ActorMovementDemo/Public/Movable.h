@@ -27,6 +27,11 @@ public:
 	FVector StartLocation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movable|Move")
 	float MaxRange;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movable|Move")
+	float Direction;
 	virtual void Tick(float DeltaTime) override;
 
+
+private:
+	float DistanceAccumulation;
 };
