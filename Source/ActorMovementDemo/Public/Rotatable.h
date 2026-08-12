@@ -17,9 +17,9 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rotatable|Rotation")
 	FVector RotationSpeed;
+
+public:
 	virtual void Tick(float DeltaTime) override;
 };
