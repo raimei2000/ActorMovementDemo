@@ -6,6 +6,7 @@ AUpDownRotatable::AUpDownRotatable()
 	StartLocation = FVector(0.0f, 0.0f, 0.0f);
 	RunningTime = 0.0f;
 	MoveRange = 500.0f;
+	StartDirection = 1.0f;
 
 	PrimaryActorTick.bCanEverTick = true;
 }
@@ -26,5 +27,5 @@ void AUpDownRotatable::Tick(float DeltaTime)
 	// UpDown(Sin)
 	RunningTime += DeltaTime;
 	float Offset = MoveRange * FMath::Sin(MoveSpeed * RunningTime);
-	SetActorLocation(StartLocation + InitialUpDirection * Offset);
+	SetActorLocation(StartLocation + StartDirection * InitialUpDirection * Offset);
 }

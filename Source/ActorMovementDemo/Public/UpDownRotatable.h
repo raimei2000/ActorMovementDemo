@@ -25,6 +25,8 @@ public:
 	FVector StartLocation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpDownRotatable|Move")
 	float MoveRange;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpDownRotatable|Move")
+	float StartDirection;
 
 	virtual void Tick(float DeltaTime) override;
 
